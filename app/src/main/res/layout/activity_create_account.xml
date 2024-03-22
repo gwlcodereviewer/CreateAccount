@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gwl.createaccount.createaccount.CreateAccountVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context=".createaccount.CreateAccountActivity">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30dp"
+            android:background="@drawable/rounded_gray_drawable"
+            android:hint="@string/full_name"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_5dp"
+            android:paddingBottom="@dimen/_15dp"
+            app:boxStrokeWidth="0dp"
+            app:hintTextColor="@color/transparent_black"
+            app:layout_constraintTop_toTopOf="parent"
+           android:layout_marginTop="@dimen/_30dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_user"
+                android:inputType="text"
+                android:lines="1"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.updateName(String.valueOf(text))}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_15dp"
+            android:background="@drawable/rounded_gray_drawable"
+            android:hint="@string/valid_email"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_5dp"
+            android:paddingBottom="@dimen/_15dp"
+            app:boxStrokeWidth="0dp"
+            app:hintTextColor="@color/transparent_black"
+            app:layout_constraintTop_toBottomOf="@id/et_full_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_mail"
+
+                android:inputType="textEmailAddress"
+                android:lines="1"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.updateEmail(String.valueOf(text))}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_15dp"
+            android:background="@drawable/rounded_gray_drawable"
+            android:hint="@string/phone_number"
+
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_5dp"
+            android:paddingBottom="@dimen/_15dp"
+            app:boxStrokeWidth="0dp"
+            app:hintTextColor="@color/transparent_black"
+            app:layout_constraintTop_toBottomOf="@id/et_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_smartphone"
+                android:inputType="number"
+                android:lines="1"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.updatePhone(String.valueOf(text))}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_15dp"
+            android:background="@drawable/rounded_gray_drawable"
+            android:hint="@string/password"
+            android:paddingHorizontal="@dimen/_10dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/primary_color"
+            android:paddingTop="@dimen/_5dp"
+            android:paddingBottom="@dimen/_15dp"
+            app:boxStrokeWidth="0dp"
+            app:hintTextColor="@color/transparent_black"
+            app:layout_constraintTop_toBottomOf="@id/et_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.updatePassword(String.valueOf(text))}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_15dp"
+            android:gravity="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <TextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30dp"
+            android:text="@string/by_checking_the_box_you_agree_to_our_terms_and_conditions"
+            android:textSize="@dimen/_13sp"
+            app:layout_constraintTop_toTopOf="@id/checkbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/checkbox" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15dp"
+            android:background="@drawable/rounded_button_drawable"
+            android:enabled="true"
+            android:onClick="@{()->viewModel.clickNext()}"
+            android:padding="@dimen/_15dp"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/bottom" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <TextView
+                android:id="@+id/tv_new_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_15dp"
+                android:gravity="end"
+                android:text="@string/already_a_member"
+                android:textSize="@dimen/_13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_register_now"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_register_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2dp"
+                android:layout_marginBottom="@dimen/_15dp"
+                android:onClick="@{()->viewModel.clickRegisterNow()}"
+                android:text="@string/log_in"
+                android:textColor="@color/primary_color"
+                android:textSize="@dimen/_13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_new_member" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
